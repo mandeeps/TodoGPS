@@ -1,0 +1,11 @@
+{
+  "name": "TodoGPS",
+  "version": "0.0.1",
+  "description": "Todo list with location aware reminders",
+  "main": "server.js",
+  "author": "Mandeep Shergill",
+  "dependencies": {
+    "express": "~3.4.4",
+    "mongoose": "~3.6.2"
+  }
+}
