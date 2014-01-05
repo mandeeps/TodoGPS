@@ -7,6 +7,10 @@ window.addEventListener 'load', ->
 main = angular.module('TodoGPS',[])
 
 main.controller 'mainController', ($scope, $http) ->
+  navigator.geolocation.watchPosition (position) ->
+    $scope.loc = position.coords
+    console.log position.coords
+
   $scope.formData = {}
 
   $http.get('/api/todos')

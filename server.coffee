@@ -2,14 +2,25 @@
 express = require 'express'
 app = express()
 mongoose = require 'mongoose'
-mongoose.connect 'mongodb://127.0.0.1:27017/todogps' #process.env.MONG
+mongoose.connect process.env.MONG
 port = process.env.PORT || 8080
+
+allowCORS = (req, res, next) ->
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
+
+	if ('OPTIONS' == req.method) 
+    	res.send 200
+    else
+    	next()
 
 app.configure ->
 	app.use express.static __dirname + '/public'
 	app.use express.logger 'dev'
 	app.use express.bodyParser()
 	app.use express.methodOverride()
+	app.use allowCORS
 
 db = mongoose.connection
 db.on 'error', console.error.bind console, 'connection error:'

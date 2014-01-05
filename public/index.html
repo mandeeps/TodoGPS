@@ -16,12 +16,11 @@
   <title>TodoGPS</title>
 </head>
 <body ng-controller="mainController">
-
   <div class="container">
     <div class="jumbotron text-center">
       <h1>TodoGPS <span class="label label-info">{{todos.length}}</span></h1>
     </div>
-
+    <center><span class="label label-info">Longitude: {{loc.longitude}} Latitude: {{loc.latitude}}</span></center>
     <div id="todo-list" class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="checkbox" ng-repeat="todo in todos">
