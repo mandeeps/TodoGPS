@@ -5,6 +5,7 @@
   "main": "server.js",
   "author": "Mandeep Shergill",
   "dependencies": {
+    "node": "0.10.x"
     "express": "~3.4.4",
     "mongoose": "~3.6.2"
   }
