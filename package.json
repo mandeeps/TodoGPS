@@ -4,8 +4,10 @@
   "description": "Todo list with location aware reminders",
   "main": "server.js",
   "author": "Mandeep Shergill",
+  "engines": {
+    "node": "0.10.x"
+  }
   "dependencies": {
-    "node": "0.10.x",
     "express": "~3.4.4",
     "mongoose": "~3.6.2"
   }
