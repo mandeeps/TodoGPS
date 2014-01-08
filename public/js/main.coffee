@@ -6,7 +6,19 @@ window.addEventListener 'load', ->
 
 main = angular.module('TodoGPS',[])
 
-main.controller 'mainController', ($scope, $http) ->
+main.service 'sharedData', ->
+  this.view = 'partials/about.html'
+
+main.controller 'Partials', ($scope, sharedData) ->
+  $scope.data = sharedData
+
+main.controller 'about', ($scope, sharedData) ->
+  $scope.login = ->
+    sharedData.view = 'partials/todo.html'
+  $scope.newUser = ->
+    sharedData.view = 'partials/todo.html'
+
+main.controller 'Todo', ($scope, $http) ->
   navigator.geolocation.watchPosition (position) ->
     $scope.loc = position.coords
     console.log position.coords

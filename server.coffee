@@ -1,6 +1,8 @@
 # server.coffee
 express = require 'express'
 app = express()
+passport = require 'passport'
+flash = require 'connect-flash'
 mongoose = require 'mongoose'
 mongoose.connect process.env.MONG
 port = process.env.PORT || 8080
@@ -21,6 +23,12 @@ app.configure ->
 	app.use express.bodyParser()
 	app.use express.methodOverride()
 	app.use allowCORS
+	app.use express.cookieParser()
+	app.set 'view engine', 'ejs'
+	app.use express.session secret: 'notsecret'
+	app.use passport.initialize()
+	app.use passport.session()
+	app.use flash()
 
 db = mongoose.connection
 db.on 'error', console.error.bind console, 'connection error:'

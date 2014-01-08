@@ -5,42 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" media="screen">
-  <link rel="icon" href='static/icon64.png'>
-  <link rel='apple-touch-icon' href='static/icon256.png'>
-  <style>
-    html {overflow-y:scroll;}
-    body {padding-top:50px;}
-    #todo-list {margin-bottom:30px;}
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/icon64.png">
+  <link rel="apple-touch-icon" href="images/icon256.png">
   <title>TodoGPS</title>
 </head>
-<body ng-controller="mainController">
+
+<body>
   <div class="container">
-    <div class="jumbotron text-center">
-      <h1>TodoGPS <span class="label label-info">{{todos.length}}</span></h1>
-    </div>
-    <center><span class="label label-info">Longitude: {{loc.longitude}} Latitude: {{loc.latitude}}</span></center>
-    <div id="todo-list" class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <div class="checkbox" ng-repeat="todo in todos">
-          <label>
-            <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{todo.text}}
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div id="todo-form" class="row">
-      <div class="col-sm-8 col-sm-offset-2 text-center">
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control input-lg text-center" placeholder="Todo item you want to be reminded about when near a place" ng-model="formData.text">
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-        </form>
-      </div>  
-    </div>
-
+    <div ng-controller="Partials" ng-include="data.view"></div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
   <script src="js/fastclick.js"></script>

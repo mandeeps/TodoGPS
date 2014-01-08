@@ -9,7 +9,24 @@
 
   main = angular.module('TodoGPS', []);
 
-  main.controller('mainController', function($scope, $http) {
+  main.service('sharedData', function() {
+    return this.view = 'partials/about.html';
+  });
+
+  main.controller('Partials', function($scope, sharedData) {
+    return $scope.data = sharedData;
+  });
+
+  main.controller('about', function($scope, sharedData) {
+    $scope.login = function() {
+      return sharedData.view = 'partials/todo.html';
+    };
+    return $scope.newUser = function() {
+      return sharedData.view = 'partials/todo.html';
+    };
+  });
+
+  main.controller('Todo', function($scope, $http) {
     navigator.geolocation.watchPosition(function(position) {
       $scope.loc = position.coords;
       return console.log(position.coords);
