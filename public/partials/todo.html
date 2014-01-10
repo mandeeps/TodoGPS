@@ -1,7 +1,7 @@
 <div id="todo" ng-controller="Todo">
 
   <div class="jumbotron text-center">
-    <h1>TodoGPS <span class="label label-info">{{todos.length}}</span></h1>
+    <h1><span class="glyphicon glyphicon-map-marker"></span> TodoGPS <span class="label label-info">{{todos.length}}</span></h1>
   </div>
   <center><span class="label label-info">Longitude: {{loc.longitude}} Latitude: {{loc.latitude}}</span></center>
 
@@ -21,7 +21,7 @@
         <div class="form-group">
           <input type="text" class="form-control input-lg text-center" placeholder="Todo item you want to be reminded about when near a place" ng-model="formData.text">
         </div>
-        <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()"><span class="glyphicon glyphicon-plus"></span> Add</button>
       </form>
     </div>
   </div>
