@@ -12,9 +12,16 @@ main.service 'sharedData', ->
 main.controller 'Partials', ($scope, sharedData) ->
   $scope.data = sharedData
 
-main.controller 'about', ($scope, sharedData) ->
+main.controller 'about', ($scope, $http, sharedData) ->
   $scope.login = ->
-    sharedData.view = 'partials/todo.html'
+    if $scope.email?
+      $http.post('/api/users/' + $scope.email)
+      .success (data) ->
+        console.log 'Succcess: ' + data
+        sharedData.view = 'partials/todo.html'
+      .error (err) ->
+        console.log 'Error getting this users data: ' + err
+
   $scope.newUser = ->
     sharedData.view = 'partials/todo.html'
 

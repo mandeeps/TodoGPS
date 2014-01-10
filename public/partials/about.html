@@ -1,6 +1,22 @@
 <div id="about" ng-controller="about">
+
+<div class="jumbotron text-center">
+  <h1><span class="glyphicon glyphicon-map-marker"></span> TodoGPS</h1>
+</div>
+
 <p>TodoGPS is a location aware todo list app that reminds you about things you need to do at particular places when it detects you're close to them.</p>
-<button class="btn btn-lg btn-primary" ng-click="login()"><span class="glyphicon glyphicon-user"></span>
- Login</button>
-<button class="btn btn-lg btn-primary" ng-click="newUser()"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
+
+	<form>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control" required autofocus ng-model="email">
+		</div>
+		<div class="form-group">
+			<label>Password</label>
+			<input type="password" class="form-control" required ng-model="password">
+		</div>
+	</form>
+
+	<button class="btn btn-lg btn-primary" ng-click="login()"><span class="glyphicon glyphicon-user"></span> Login</button>
+	<button class="btn btn-lg btn-primary" ng-click="newUser()"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
 </div>

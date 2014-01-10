@@ -17,9 +17,16 @@
     return $scope.data = sharedData;
   });
 
-  main.controller('about', function($scope, sharedData) {
+  main.controller('about', function($scope, $http, sharedData) {
     $scope.login = function() {
-      return sharedData.view = 'partials/todo.html';
+      if ($scope.email != null) {
+        return $http.post('/api/users/' + $scope.email).success(function(data) {
+          console.log('Succcess: ' + data);
+          return sharedData.view = 'partials/todo.html';
+        }).error(function(err) {
+          return console.log('Error getting this users data: ' + err);
+        });
+      }
     };
     return $scope.newUser = function() {
       return sharedData.view = 'partials/todo.html';
