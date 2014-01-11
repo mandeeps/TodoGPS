@@ -3,6 +3,7 @@ express = require 'express'
 app = express()
 passport = require 'passport'
 flash = require 'connect-flash'
+bcrypt = require 'bcrypt-nodejs'
 mongoose = require 'mongoose'
 mongoose.connect process.env.MONG
 port = process.env.PORT || 8080
@@ -33,6 +34,17 @@ app.configure ->
 db = mongoose.connection
 db.on 'error', console.error.bind console, 'connection error:'
 db.once 'open', () ->
+
+	userSchema  = mongoose.Scheme 
+		local :
+			email : String,
+			password : String
+
+	userSchema.methods.generateHash = (password) ->
+		bcrypt.hashSync password, bcrypt.genSaltSync(8), null
+
+	userSchema.methods.validPassword = (password) ->
+		bcrypt.compareSync password, this.local.password
 
 	Todo = mongoose.model 'Todo', 
 		text: String
