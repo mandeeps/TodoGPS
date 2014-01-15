@@ -25,7 +25,7 @@ app.configure ->
 	app.use express.methodOverride()
 	app.use allowCORS
 	app.use express.cookieParser()
-	app.set 'view engine', 'ejs'
+#	app.set 'view engine', 'ejs'
 	app.use express.session secret: 'notsecret'
 	app.use passport.initialize()
 	app.use passport.session()
@@ -35,16 +35,16 @@ db = mongoose.connection
 db.on 'error', console.error.bind console, 'connection error:'
 db.once 'open', () ->
 
-	userSchema  = mongoose.Scheme 
-		local :
-			email : String,
-			password : String
-
-	userSchema.methods.generateHash = (password) ->
-		bcrypt.hashSync password, bcrypt.genSaltSync(8), null
-
-	userSchema.methods.validPassword = (password) ->
-		bcrypt.compareSync password, this.local.password
+#	userSchema  = mongoose.Scheme 
+#		local :
+#			email : String,
+#			password : String
+#
+#	userSchema.methods.generateHash = (password) ->
+#		bcrypt.hashSync password, bcrypt.genSaltSync(8), null
+#
+#	userSchema.methods.validPassword = (password) ->
+#		bcrypt.compareSync password, this.local.password
 
 	Todo = mongoose.model 'Todo', 
 		text: String

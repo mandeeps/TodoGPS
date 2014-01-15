@@ -36,7 +36,6 @@
     app.use(express.methodOverride());
     app.use(allowCORS);
     app.use(express.cookieParser());
-    app.set('view engine', 'ejs');
     app.use(express.session({
       secret: 'notsecret'
     }));
@@ -50,19 +49,7 @@
   db.on('error', console.error.bind(console, 'connection error:'));
 
   db.once('open', function() {
-    var Todo, userSchema;
-    userSchema = mongoose.Scheme({
-      local: {
-        email: String,
-        password: String
-      }
-    });
-    userSchema.methods.generateHash = function(password) {
-      return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-    };
-    userSchema.methods.validPassword = function(password) {
-      return bcrypt.compareSync(password, this.local.password);
-    };
+    var Todo;
     Todo = mongoose.model('Todo', {
       text: String
     });
